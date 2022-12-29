@@ -1,0 +1,100 @@
+@use "styles";
+
+header {
+  background: url(assets/pattern-bg.png);
+  width: 100vw;
+  height: 35vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  h1 {
+    color: styles.$white;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 30px;
+    margin: 26px 0 0;
+  }
+  .search-line {
+    margin: 29px 0 24px;
+    display: flex;
+
+    input {
+      all: unset;
+      width: 245px;
+      height: 58px;
+      background-color: styles.$white;
+      border-radius: 15px 0px 0px 15px;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+      color: styles.$text-black;
+      cursor: text;
+      padding-left: 24px;
+    }
+
+    input::placeholder {
+      color: styles.$text-black;
+      font-size: 14px;
+      opacity: 0.5;
+    }
+
+    input::first-letter {
+      margin-left: 24px;
+    }
+
+    button {
+      width: 58px;
+      height: 58px;
+      background-color: black;
+      border-radius: 0px 15px 15px 0px;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+  }
+  .Ip-info {
+    width: 327px;
+    height: 294px;
+    background-color: styles.$white;
+    text-align: center;
+    border-radius: 15px;
+
+    h2 {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: -0.178571px;
+      color: styles.$text-black;
+      margin: 7px 0 0;
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 1.45833px;
+      opacity: 0.5;
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin: 24px 0 0;
+      }
+
+      li:last-child {
+        margin-bottom: 24px;
+      }
+    }
+  }
+}
+
+#map {
+  width: 100vw;
+  height: 65vh;
+}
