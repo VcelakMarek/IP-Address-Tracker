@@ -46,22 +46,32 @@ header {
     button {
       width: 58px;
       height: 58px;
-      background-color: black;
+      background-color: #000;
       border-radius: 0px 15px 15px 0px;
       cursor: pointer;
       border: none;
       padding: 0;
     }
+
+    button:hover {
+      background-color: #3f3f3f;
+    }
+
+    button:active {
+      background-color: #000;
+    }
   }
+
   .Ip-info {
     width: 327px;
     height: 294px;
     background-color: styles.$white;
     text-align: center;
     border-radius: 15px;
+    z-index: 10;
 
     h2 {
-      font-weight: 500;
+      font-weight: 700;
       font-size: 20px;
       line-height: 24px;
       letter-spacing: -0.178571px;
@@ -97,4 +107,67 @@ header {
 #map {
   width: 100vw;
   height: 65vh;
+  z-index: 1;
+}
+
+@media (min-width: 1440px) {
+  header {
+    h1 {
+      font-size: 32px;
+      line-height: 30px;
+    }
+
+    .search-line {
+      input {
+        width: 497px;
+      }
+    }
+  }
+
+  header {
+    .Ip-info {
+      width: 1110px;
+      height: 161px;
+
+      h2 {
+        font-size: 26px;
+        line-height: 30px;
+        margin: 13px 0 0;
+      }
+
+      h3 {
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      ul {
+        height: 161px;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 65px;
+        justify-content: center;
+        text-align: left;
+
+        li {
+          margin: 37px 0 0;
+          width: 213px;
+          position: relative;
+        }
+
+        div {
+          position: absolute;
+          width: 1px;
+          height: 75px;
+          background-color: #000;
+          opacity: 0.15;
+          top: 7px;
+          right: -31px;
+        }
+
+        li:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }
