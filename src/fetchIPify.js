@@ -10,8 +10,10 @@ const fetchIPify = async (ipAddress, setGeolocation, setCoordinates) => {
   } else {
     const json = await res.json();
     setGeolocation(json);
-    setCoordinates([json.location.lat, json.location.lng]);
-    console.log(typeof (json.location.lat, json.location.lng));
+    setCoordinates([
+      json.location.lat.toString(),
+      json.location.lng.toString(),
+    ]);
   }
 };
 
