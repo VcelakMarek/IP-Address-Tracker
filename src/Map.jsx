@@ -6,6 +6,7 @@ import markerIcon from "./assets/icon-location.svg";
 
 const Map = () => {
   const [coordinates] = useContext(coordinatesContext);
+  const [fetchLoaded, setFetchLoaded] = useState(false);
   useEffect(() => {
     var map = L.map("map").setView([51.505, -0.09], 13);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -20,17 +21,41 @@ const Map = () => {
       popupAnchor: [-0, -0],
       iconSize: [45, 55],
     });
-    var marker = L.marker([51.5, -0.09], { icon: myIcon }).addTo(map);
+    var marker = L.marker(
+      coordinates.length === 2
+        ? [coordinates[0], coordinates[1]]
+        : [37.77493, -0.09],
+      { icon: myIcon }
+    ).addTo(map);
+    setFetchLoaded(true);
   }, []);
+
+  console.log("yuhbayhdbf", coordinates.length === 2);
+  console.log(typeof coordinates);
+  console.log(fetchLoaded);
 
   return (
     <>
-      <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+      <MapContainer
+        center={
+          coordinates.length === 2
+            ? [coordinates[0], coordinates[1]]
+            : [37.77493, -0.09]
+        }
+        zoom={13}
+        scrollWheelZoom={false}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[51.505, -0.09]}>
+        <Marker
+          position={
+            coordinates.length === 2
+              ? [coordinates[0], coordinates[1]]
+              : [37.77493, -0.09]
+          }
+        >
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
