@@ -73,9 +73,7 @@ const IpAddressTracker = () => {
           </ul>
         </section>
       </header>
-      <div id="map">
-        <Map />
-      </div>
+      <Map />
     </>
   );
 };
