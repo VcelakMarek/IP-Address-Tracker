@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const coordinatesContext = createContext("");
+const coordinatesContext = createContext([]);
 
 export default coordinatesContext;
