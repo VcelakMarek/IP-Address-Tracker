@@ -1,92 +1,62 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  useMap,
-  Marker,
-  Popup,
-  useMapEvent,
-} from "react-leaflet";
+import { useContext, useEffect, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import coordinatesContext from "./coordinates.context";
 import markerIcon from "./assets/icon-location.svg";
 
-function MyComponent() {
-  const map = useMapEvent("click", () => {
-    map.setCenter([50.5, 30.5]);
-  });
-  return null;
-}
+const defaultCenter = [49.2, 16.62];
 
 const Map = () => {
+  const [map, setMap] = useState(null);
+  const [marker, setMarker] = useState(null);
   const [coordinates] = useContext(coordinatesContext);
-  const [fetchLoaded, setFetchLoaded] = useState(false);
 
   useEffect(() => {
-    // var map = L.map("map").setView([49.2, 16.62], 13);
-    // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    //   maxZoom: 19,
-    //   attribution:
-    //     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    // }).addTo(map);
-    // var myIcon = new L.Icon({
-    //   iconUrl: markerIcon,
-    //   iconRetinaUrl: markerIcon,
-    //   popupAnchor: [-0, -0],
-    //   iconSize: [45, 55],
-    // });
-    // var marker = L.marker(
-    //   coordinates.length === 2
-    //     ? [coordinates[0], coordinates[1]]
-    //     : [49.2, 16.62],
-    //   { icon: myIcon }
-    // ).addTo(map);
-    // setFetchLoaded(true);
-  }, []);
+    let markerCoordinates = [];
+    coordinates.length === 2
+      ? [
+          map.flyTo(coordinates, 13, {
+            duration: 2,
+          }),
+          (markerCoordinates = [coordinates[0] - 0.01, coordinates[1]]),
+          marker.setLatLng(markerCoordinates),
+        ]
+      : null;
+  }, [coordinates]);
 
-  // useEffect(() => {
-  //   console.log("map", map);
-  //   if (coordinates.length === 2) {
-  //     map.flyTo(coordinates, map.getZoom());
-  //   }
-  // }, [coordinates, map]);
-
-  console.log("yuhbayhdbf", coordinates.length === 2);
-  console.log(coordinates);
-  console.log(fetchLoaded);
+  var myIcon = new L.Icon({
+    iconUrl: markerIcon,
+    iconRetinaUrl: markerIcon,
+    popupAnchor: [-0, -0],
+    iconSize: [45, 55],
+  });
 
   return (
     <MapContainer
-      eventHanlers={{
-        click: () => {
-          console.log("map clicked");
-        },
-      }}
-      style={{ height: 400 }}
+      style={{ height: "65vh" }}
+      ref={setMap}
       center={
         coordinates.length === 2
-          ? [coordinates[0], coordinates[1]]
-          : [49.2, 16.62]
+          ? [coordinates[0] + 0.01, coordinates[1]]
+          : [defaultCenter[0] + 0.01, defaultCenter[1]]
       }
       zoom={13}
       scrollWheelZoom={false}
     >
-      {/* <MyComponent /> */}
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker
+        ref={setMarker}
         position={
           coordinates.length === 2
             ? [coordinates[0], coordinates[1]]
-            : [49.2, 16.62]
+            : [defaultCenter[0], defaultCenter[1]]
         }
-      >
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+        icon={myIcon}
+      ></Marker>
     </MapContainer>
   );
 };
