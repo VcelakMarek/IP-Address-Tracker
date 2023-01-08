@@ -8,9 +8,8 @@ const App = () => {
   return (
     <>
       <coordinatesContext.Provider value={coordinates}>
-        <IpAddressTracker />;
+        <IpAddressTracker />
       </coordinatesContext.Provider>
-      ;
     </>
   );
 };
