@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import coordinatesContext from "./coordinates.context";
 import markerIcon from "./assets/icon-location.svg";
 
-const defaultCenter = [49.2, 16.62];
+let defaultCenter = [49.2, 16.62];
 
 const Map = () => {
   const [map, setMap] = useState(null);
