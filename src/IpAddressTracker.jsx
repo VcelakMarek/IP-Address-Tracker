@@ -6,13 +6,25 @@ import "./scss/IpAddressTracker-styles.scss";
 
 const IpAddressTracker = () => {
   const [ipAddress, setIpAddress] = useState("");
+  const [clientIP, setClientIP] = useState("");
   const [geolocation, setGeolocation] = useState("");
   const [, setCoordinates] = useContext(coordinatesContext);
-  //   const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-  //   console.log(API_KEY);
+  // const API_KEY = import.meta.env.VITE_API_KEY;
+  // console.log(API_KEY);
+
+  const getCLientIP = async () => {
+    const res = await fetch("https://geolocation-db.com/json/");
+    const json = await res.json();
+    setClientIP(json.IPv4);
+  };
+
   useEffect(() => {
-    fetchIPify("151.101.2.133", setGeolocation, setCoordinates);
+    getCLientIP();
   }, []);
+
+  useEffect(() => {
+    fetchIPify(clientIP, setGeolocation, setCoordinates);
+  }, [clientIP]);
   return (
     <>
       <header>
