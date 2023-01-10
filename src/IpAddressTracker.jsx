@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import Map from "./Map";
 import coordinatesContext from "./coordinates.context";
 import fetchIPify from "./fetchIPify";
+import IconArrow from "./assets/icon-arrow.svg";
+import HeaderBackground from "./assets/pattern-bg.png";
 import "./scss/IpAddressTracker-styles.scss";
 
 const IpAddressTracker = () => {
@@ -27,7 +29,7 @@ const IpAddressTracker = () => {
   }, [clientIP]);
   return (
     <>
-      <header>
+      <header style={{ background: `url(${HeaderBackground})` }}>
         <h1>IP Address Tracker</h1>
         <div className="search-line">
           <label htmlFor="IpAddress">
@@ -49,7 +51,7 @@ const IpAddressTracker = () => {
                 e.preventDefault();
             }}
           >
-            <img src="./assets/icon-arrow.svg" alt="icon-arrow" />
+            <img src={IconArrow} alt="icon-arrow" />
           </button>
         </div>
         <section className="Ip-info">
