@@ -33,7 +33,9 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [ipify](https://www.ipify.org/) - IP Address API
 - [leaflet](https://leafletjs.com/) - Maps library
-- [SASS](https://sass-lang.com/) - CSS preprocessor
+- [Vite](https://vitejs.dev/) - Build tool
+- [Prettier](https://prettier.io/) - Code formatter
+- [ESLint](https://eslint.org/) - Syntax check
 
 ### What I learned
 
