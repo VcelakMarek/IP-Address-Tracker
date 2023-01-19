@@ -164,3 +164,15 @@ header {
     }
   }
 }
+
+@media (min-width: 1920px) {
+  header {
+    .search-line {
+      margin-top: 75px;
+    }
+
+    .Ip-info {
+      margin-top: 75px;
+    }
+  }
+}
