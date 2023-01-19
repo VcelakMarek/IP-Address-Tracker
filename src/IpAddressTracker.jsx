@@ -29,7 +29,12 @@ const IpAddressTracker = () => {
   }, [clientIP]);
   return (
     <>
-      <header style={{ background: `url(${HeaderBackground})` }}>
+      <header
+        style={{
+          background: `url(${HeaderBackground})`,
+          backgroundSize: "cover",
+        }}
+      >
         <h1>IP Address Tracker</h1>
         <div className="search-line">
           <label htmlFor="IpAddress">
