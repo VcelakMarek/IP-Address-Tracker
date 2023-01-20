@@ -11,8 +11,6 @@ const IpAddressTracker = () => {
   const [clientIP, setClientIP] = useState("");
   const [geolocation, setGeolocation] = useState("");
   const [, setCoordinates] = useContext(coordinatesContext);
-  // const API_KEY = import.meta.env.VITE_API_KEY;
-  // console.log(API_KEY);
 
   const getCLientIP = async () => {
     const res = await fetch("https://geolocation-db.com/json/");
@@ -27,6 +25,7 @@ const IpAddressTracker = () => {
   useEffect(() => {
     fetchIPify(clientIP, setGeolocation, setCoordinates);
   }, [clientIP]);
+
   return (
     <>
       <header
@@ -47,7 +46,7 @@ const IpAddressTracker = () => {
                 if (e.key === "Enter")
                   fetchIPify(ipAddress, setGeolocation, setCoordinates);
               }}
-              placeholder="Search for any IP address or domain"
+              placeholder="Search for any IP address"
             />
           </label>
           <button
