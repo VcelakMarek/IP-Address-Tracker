@@ -56,7 +56,7 @@ const Map = () => {
             : [defaultCenter[0], defaultCenter[1]]
         }
         icon={myIcon}
-      ></Marker>
+      />
     </MapContainer>
   );
 };
