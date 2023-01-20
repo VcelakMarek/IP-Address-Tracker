@@ -6,11 +6,9 @@ import coordinatesContext from "./coordinates.context";
 const App = () => {
   const coordinates = useState(coordinatesContext);
   return (
-    <>
-      <coordinatesContext.Provider value={coordinates}>
-        <IpAddressTracker />
-      </coordinatesContext.Provider>
-    </>
+    <coordinatesContext.Provider value={coordinates}>
+      <IpAddressTracker />
+    </coordinatesContext.Provider>
   );
 };
 
